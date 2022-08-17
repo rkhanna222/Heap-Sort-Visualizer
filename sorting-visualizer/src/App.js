@@ -40,12 +40,12 @@ class App extends Component {
   }
 
   generateRandomArray = () => {
-    // Generate pseudo-random number between 1 and max
+    // Generate the random array between 1 and max
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max)) + 1;
     }
 
-    // Generate an array of length max
+    // Generate an array
     const array = Array(this.state.arraySize)
       .fill(0)
       .map(() => getRandomInt(this.state.arraySize * 5));
@@ -70,7 +70,19 @@ class App extends Component {
     this.setState({ arraySize: size }, this.generateRandomArray);
   };
 
-  createTrace = () => {
+  //To setup the dark theme in the application
+  toggleDarkMode = () => {
+    this.setState((lastState) => ({ darkMode: !lastState.darkMode }));
+  };
+
+  toggleAppDrawer = () => {
+    this.setState((lastState) => ({
+      drawerOpen: !lastState.drawerOpen
+    }));
+  };
+
+   //Create the trace of the elements
+   createTrace = () => {
     const numbers = [...this.state.array];
     const sort = this.ALGORITHM[this.state.algorithm];
     if (sort) {
@@ -79,20 +91,10 @@ class App extends Component {
     }
   };
 
-  toggleDarkMode = () => {
-    this.setState((prevState) => ({ darkMode: !prevState.darkMode }));
-  };
-
-  toggleAppDrawer = () => {
-    this.setState((prevState) => ({
-      appDrawerOpen: !prevState.appDrawerOpen
-    }));
-  };
-
   render() {
     let theme = `App`;
-    if (this.state.darkMode) theme += ` App_dark`;
-    if (this.state.appDrawerOpen) theme += ` App_modal_open`;
+    if (this.state.darkMode) theme += ` Alp_dark`;
+    if (this.state.drawerOpen) theme += ` Alp_modal_open`;
 
     const colorKey = this.ALGORITHM_KEY[this.state.algorithm];
     const desc = this.ALGORITHM_DESC[this.state.algorithm];
