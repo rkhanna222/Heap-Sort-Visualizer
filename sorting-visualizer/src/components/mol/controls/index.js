@@ -6,7 +6,7 @@ import Button from '../../smallElements/button';
 import Switch from '../../smallElements/switch';
 import Menu from '../../mol/menu';
 
-const AppControls = ({
+const Controls = ({
   algorithm,
   onAlgorithmChange,
   onGenerateRandomArray,
@@ -26,7 +26,7 @@ const AppControls = ({
         onSelect={onAlgorithmChange}
       />
 
-      <div className="AppControls__Size">
+      <div className="Controls__Size">
         <span>Size</span>
         <Menu
           placeholder="Array Size"
@@ -39,7 +39,7 @@ const AppControls = ({
       <Button onClick={onGenerateRandomArray}>Randomize</Button>
 
       <Switch
-        label="Dark Mode"
+        label="Change Theme"
         onSwitch={onToggleDarkMode}
         checked={darkMode}
       />
@@ -47,7 +47,7 @@ const AppControls = ({
   );
 };
 
-AppControls.propTypes = {
+Controls.propTypes = {
   algorithm: PropTypes.string,
   onAlgorithmChange: PropTypes.func.isRequired,
   onGenerateRandomArray: PropTypes.func.isRequired,
@@ -57,4 +57,4 @@ AppControls.propTypes = {
   darkMode: PropTypes.bool
 };
 
-export default AppControls;
+export default Controls;
