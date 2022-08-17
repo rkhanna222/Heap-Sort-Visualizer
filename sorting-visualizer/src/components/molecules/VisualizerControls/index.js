@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 import PropTypes from 'prop-types';
 
-import Button from '../../smallElements/button';
+import Button from '../../atoms/Button';
 import {
   MdPlayArrow as Play,
   MdPause as Pause,
@@ -10,7 +10,7 @@ import {
   MdSkipPrevious as Backward,
   MdRepeat as Repeat
 } from 'react-icons/md';
-import Menu from '../menu';
+import Menu from '../Menu';
 
 // Helper function
 function isDisabled(action, disabled = false) {

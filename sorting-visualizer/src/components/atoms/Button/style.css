@@ -14,7 +14,7 @@
   color: var(--text-color);
 
   padding: 0 var(--button-horizontal-padding);
-  background-color: rgba(83, 21, 21, 0);
+  background-color: rgba(0, 0, 0, 0);
 
   /* Display */
   display: inline-flex;
@@ -55,6 +55,9 @@
   height: 18px;
   font-size: 18px;
   vertical-align: top;
+}
+
+.Button__Label {
 }
 
 /* Modifiers */

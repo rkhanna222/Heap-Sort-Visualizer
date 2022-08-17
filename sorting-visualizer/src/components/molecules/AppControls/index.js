@@ -2,11 +2,11 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 
-import Button from '../../smallElements/button';
-import Switch from '../../smallElements/switch';
-import Menu from '../../mol/menu';
+import Button from '../../atoms/Button';
+import Switch from '../../atoms/Switch';
+import Menu from '../../molecules/Menu';
 
-const Controls = ({
+const AppControls = ({
   algorithm,
   onAlgorithmChange,
   onGenerateRandomArray,
@@ -20,17 +20,22 @@ const Controls = ({
       <Menu
         placeholder="Sort Algorithm"
         items={[
+          'Bubble Sort',
+          'Selection Sort',
+          'Insertion Sort',
+          'Merge Sort',
+          'Quick Sort',
           'Heap Sort'
         ]}
         selected={algorithm}
         onSelect={onAlgorithmChange}
       />
 
-      <div className="Controls__Size">
+      <div className="AppControls__Size">
         <span>Size</span>
         <Menu
           placeholder="Array Size"
-          items={['5', '10', '25', '50', '75']}
+          items={['5', '10', '25', '50', '75', '100']}
           selected={String(arraySize)}
           onSelect={onArraySizeChange}
         />
@@ -39,7 +44,7 @@ const Controls = ({
       <Button onClick={onGenerateRandomArray}>Randomize</Button>
 
       <Switch
-        label="Change Theme"
+        label="Dark Mode"
         onSwitch={onToggleDarkMode}
         checked={darkMode}
       />
@@ -47,7 +52,7 @@ const Controls = ({
   );
 };
 
-Controls.propTypes = {
+AppControls.propTypes = {
   algorithm: PropTypes.string,
   onAlgorithmChange: PropTypes.func.isRequired,
   onGenerateRandomArray: PropTypes.func.isRequired,
@@ -57,4 +62,4 @@ Controls.propTypes = {
   darkMode: PropTypes.bool
 };
 
-export default Controls;
+export default AppControls;

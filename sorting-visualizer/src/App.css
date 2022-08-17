@@ -1,7 +1,7 @@
-@import './settings/helperDark.css';
+@import './_settngs/variables.css';
 
-.Alp {
-  --footer-height: 154px;
+.App {
+  --footer-height: 64px;
 
   box-sizing: border-box;
   min-height: 100vh;
@@ -13,26 +13,26 @@
   text-align: center;
   color: var(--text-color);
 
-  background-color: var(--background-color-2);
+  background-color: var(--background-color-1);
   transition: color 250ms;
   transition: background-color 500ms ease-in-out;
 }
 
-.Alp__B {
-  padding-top: 84px;
+.App__Body {
+  padding-top: 64px;
 }
 
-.Alp_modal_open {
+.App_modal_open {
   height: 100vh;
   overflow-y: hidden;
 }
 
-.Alp_modal_open footer {
-  display: true;
+.App_modal_open footer {
+  display: none;
 }
 
 @media (max-width: 599px) {
-  .Alp {
+  .App {
     --footer-height: 160px;
   }
 }

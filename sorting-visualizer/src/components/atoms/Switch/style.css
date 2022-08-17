@@ -55,3 +55,13 @@
   margin-left: 24px;
 }
 
+/* .Switch__NativeControl {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  pointer-events: auto;
+} */

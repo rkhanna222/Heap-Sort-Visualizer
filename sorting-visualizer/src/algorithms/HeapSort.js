@@ -1,52 +1,49 @@
 import React from 'react';
 import {
-  swapping,
-  beginTrace,
-  additionToTrace,
-  lastElementSorted,
-  rangeFunc,
-  keyFunc
-} from './help';
+  swap,
+  newTrace,
+  addToTrace,
+  lastSorted,
+  createRange,
+  createKey
+} from './helpers';
 
 const HeapSort = (nums) => {
-  const trace = beginTrace(nums);
+  const trace = newTrace(nums);
 
   // Helper functions to quickly access nodes
-  const l = (i) => 2 * i + 1;
-  const r = (i) => 2 * i + 2;
+  const left = (i) => 2 * i + 1;
+  const right = (i) => 2 * i + 2;
   const parent = (i) => Math.floor((i - 1) / 2);
 
-  
-  //Heapify Method
+  const maxHeapify = (array, i, heapsize) => {
+    const leftChild = left(i);
+    const rightChild = right(i);
 
-  const maxxHeapy = (array, i, heapsize) => {
-    const lChild = l(i);
-    const rChild = r(i);
-
-    // Visualize: Compare parent and lChild
-    additionToTrace(trace, array, lastElementSorted(trace), [i, lChild]);
+    // Visualize: Compare parent and leftChild
+    addToTrace(trace, array, lastSorted(trace), [i, leftChild]);
 
     let largest =
-      lChild < heapsize && array[lChild] > array[i]
-        ? lChild
+      leftChild < heapsize && array[leftChild] > array[i]
+        ? leftChild
         : i;
 
-    // Visualize: Compare largest and rChild
-    additionToTrace(trace, array, lastElementSorted(trace), [largest, rChild]);
+    // Visualize: Compare largest and rightChild
+    addToTrace(trace, array, lastSorted(trace), [largest, rightChild]);
 
-    if (rChild < heapsize && array[rChild] > array[largest])
-      largest = rChild;
+    if (rightChild < heapsize && array[rightChild] > array[largest])
+      largest = rightChild;
 
     if (largest !== i) {
       // Visualize: Select largest child and parent
-      additionToTrace(trace, array, lastElementSorted(trace), [], [i, largest]);
+      addToTrace(trace, array, lastSorted(trace), [], [i, largest]);
 
-      swapping(array, i, largest);
+      swap(array, i, largest);
 
-      // Visualize: swapping largest child and parent
-      additionToTrace(trace, array, lastElementSorted(trace), [], [i, largest]);
+      // Visualize: Swap largest child and parent
+      addToTrace(trace, array, lastSorted(trace), [], [i, largest]);
 
-      maxxHeapy(array, largest, heapsize);
+      maxHeapify(array, largest, heapsize);
     }
   };
 
@@ -54,18 +51,18 @@ const HeapSort = (nums) => {
     const start = Math.floor(array.length / 2);
     const heapsize = array.length;
     for (let i = start; i >= 0; i--) {
-      maxxHeapy(array, i, heapsize);
+      maxHeapify(array, i, heapsize);
     }
 
     // Visualize: Mark heap as built
-    additionToTrace(
+    addToTrace(
       trace,
       array,
-      lastElementSorted(trace),
+      lastSorted(trace),
       [],
       [],
       [],
-      rangeFunc(0, array.length)
+      createRange(0, array.length)
     );
   };
 
@@ -74,28 +71,28 @@ const HeapSort = (nums) => {
     let heapsize = array.length;
     for (let i = array.length - 1; i > 0; i--) {
       // Visualize: Select Maximum
-      additionToTrace(trace, array, lastElementSorted(trace), [], [0, i]);
+      addToTrace(trace, array, lastSorted(trace), [], [0, i]);
 
-      swapping(array, 0, i);
+      swap(array, 0, i);
       heapsize -= 1;
 
-      // Visualize: swapping with last element in heap
-      additionToTrace(trace, array, [...lastElementSorted(trace), i], [], [0, i]);
+      // Visualize: Swap with last element in heap
+      addToTrace(trace, array, [...lastSorted(trace), i], [], [0, i]);
 
-      maxxHeapy(array, 0, heapsize);
+      maxHeapify(array, 0, heapsize);
 
       // Visualize: Heap created
-      additionToTrace(
+      addToTrace(
         trace,
         array,
-        lastElementSorted(trace),
+        lastSorted(trace),
         [],
         [],
         [],
-        rangeFunc(0, heapsize)
+        createRange(0, heapsize)
       );
     }
-    additionToTrace(trace, array, [...lastElementSorted(trace), 0]);
+    addToTrace(trace, array, [...lastSorted(trace), 0]);
   };
 
   // Execute Heapsort
@@ -103,7 +100,7 @@ const HeapSort = (nums) => {
   return trace;
 };
 
-export const HeapSortKey = keyFunc(
+export const HeapSortKey = createKey(
   'Comparing',
   'Swapping',
   null,
@@ -122,9 +119,11 @@ export const HeapSortDesc = {
         >
           Heap Sort
         </a>{' '}
-        is an enhanced selection sort that locates the maximum or minimum element using the heap data structure as 
-        opposed to a linear-time search. It is an unstable in-place sorting algorithm that, 
-        in actual use, runs a little more slowly than Quicksort.
+        can be thought of as an improved selection sort that uses the
+        heap data structure rather than a linear-time search to find the
+        maximum or minimum element. It is an in-place sorting algorithm
+        that is not stable and has a somewhat slower running time than
+        Quicksort in practice.
       </p>
       <p>
         The heapsort algorithm can be divided into two parts. In the
@@ -149,7 +148,7 @@ export const HeapSortDesc = {
         </li>
         <li>
           Call the <em>siftDown()</em>, also called{' '}
-          <em>maxxHeapy()</em> function on the list to sift the new
+          <em>maxHeapify()</em> function on the list to sift the new
           first element to its appropriate index in the heap.
         </li>
         <li>

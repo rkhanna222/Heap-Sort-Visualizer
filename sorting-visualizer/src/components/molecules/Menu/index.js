@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import './style.css';
 
 // Sub components
-import Backdrop from '../../smallElements/sideDrop';
+import Backdrop from '../../atoms/Backdrop';
 import {
   MdExpandMore as AngleDown,
   MdExpandLess as AngleUp
 } from 'react-icons/md';
-import Button from '../../smallElements/button';
+import Button from '../../atoms/Button';
 
 const MenuList = ({ open, items, onSelect }) => {
   return open ? (

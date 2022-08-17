@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import './AppDark.css';
 
-import Cont from './components/mol/controls';
-import Bar from './components/mainElements/topBar';
-import Drawer from './components/mainElements/drawer';
-import Visualizer from './components/mainElements/sortVis';
+import Controls from './components/molecules/AppControls';
+import TopBar from './components/organisms/TopBar';
+import AppDrawer from './components/organisms/AppDrawer';
+import SortVisualizer from './components/organisms/SortVisualizer';
 
 import HeapSort, {
-  HeapKey,
-  HeapDesc
-} from './algo/heapSort';
+  HeapSortKey,
+  HeapSortDesc
+} from './algorithms/HeapSort';
 
 
 class App extends Component {
@@ -28,11 +28,11 @@ class App extends Component {
   };
 
   ALGORITHM_KEY = {
-    'Heap Sort': HeapKey
+    'Heap Sort': HeapSortKey
   };
 
   ALGORITHM_DESC = {
-    'Heap Sort': HeapDesc,
+    'Heap Sort': HeapSortDesc,
   };
 
   componentDidMount() {
@@ -40,12 +40,12 @@ class App extends Component {
   }
 
   generateRandomArray = () => {
-    // Generate the random array between 1 and max
+    // Generate pseudo-random number between 1 and max
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max)) + 1;
     }
 
-    // Generate an array
+    // Generate an array of length max
     const array = Array(this.state.arraySize)
       .fill(0)
       .map(() => getRandomInt(this.state.arraySize * 5));
@@ -70,19 +70,7 @@ class App extends Component {
     this.setState({ arraySize: size }, this.generateRandomArray);
   };
 
-  //To setup the dark theme in the application
-  toggleDarkMode = () => {
-    this.setState((lastState) => ({ darkMode: !lastState.darkMode }));
-  };
-
-  toggleAppDrawer = () => {
-    this.setState((lastState) => ({
-      drawerOpen: !lastState.drawerOpen
-    }));
-  };
-
-   //Create the trace of the elements
-   createTrace = () => {
+  createTrace = () => {
     const numbers = [...this.state.array];
     const sort = this.ALGORITHM[this.state.algorithm];
     if (sort) {
@@ -91,16 +79,26 @@ class App extends Component {
     }
   };
 
+  toggleDarkMode = () => {
+    this.setState((prevState) => ({ darkMode: !prevState.darkMode }));
+  };
+
+  toggleAppDrawer = () => {
+    this.setState((prevState) => ({
+      appDrawerOpen: !prevState.appDrawerOpen
+    }));
+  };
+
   render() {
     let theme = `App`;
-    if (this.state.darkMode) theme += ` Alp_dark`;
-    if (this.state.drawerOpen) theme += ` Alp_modal_open`;
+    if (this.state.darkMode) theme += ` App_dark`;
+    if (this.state.appDrawerOpen) theme += ` App_modal_open`;
 
     const colorKey = this.ALGORITHM_KEY[this.state.algorithm];
     const desc = this.ALGORITHM_DESC[this.state.algorithm];
 
     const controls = (
-      <Cont
+      <Controls
         onGenerateRandomArray={this.generateRandomArray}
         algorithm={this.state.algorithm}
         onAlgorithmChange={this.handleAlgorithmChange}
@@ -113,22 +111,22 @@ class App extends Component {
 
     return (
       <div className={theme}>
-        <Bar
+        <TopBar
           drawerOpen={this.state.appDrawerOpen}
           toggleDrawer={this.toggleAppDrawer}
         >
           {controls}
-        </Bar>
+        </TopBar>
 
-        <Drawer
+        <AppDrawer
           open={this.state.appDrawerOpen}
           closeDrawer={this.toggleAppDrawer}
         >
           {controls}
-        </Drawer>
+        </AppDrawer>
 
-        <main className="Alp__Body">
-          <Visualizer
+        <main className="App__Body">
+          <SortVisualizer
             array={this.state.array}
             trace={this.state.trace}
             colorKey={colorKey}
