@@ -1,6 +1,6 @@
 @import './settings/helperDark.css';
 
-.App {
+.Alp {
   --footer-height: 154px;
 
   box-sizing: border-box;
@@ -18,21 +18,21 @@
   transition: background-color 500ms ease-in-out;
 }
 
-.App__Body {
+.Alp__B {
   padding-top: 84px;
 }
 
-.App_modal_open {
+.Alp_modal_open {
   height: 100vh;
   overflow-y: hidden;
 }
 
-.App_modal_open footer {
+.Alp_modal_open footer {
   display: true;
 }
 
 @media (max-width: 599px) {
-  .App {
+  .Alp {
     --footer-height: 160px;
   }
 }

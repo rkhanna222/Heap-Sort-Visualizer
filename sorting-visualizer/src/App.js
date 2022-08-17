@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import './AppDark.css';
 
-import Controls from './components/molecules/Controls';
-import TopBar from './components/organisms/TopBar';
-import AppDrawer from './components/organisms/AppDrawer';
-import SortVisualizer from './components/organisms/SortVisualizer';
+import Cont from './components/mol/controls';
+import Bar from './components/mainElements/topBar';
+import Drawer from './components/mainElements/drawer';
+import Visualizer from './components/mainElements/sortVis';
 
 import HeapSort, {
-  HeapSortKey,
-  HeapSortDesc
-} from './algorithms/HeapSort';
+  HeapKey,
+  HeapDesc
+} from './algo/heapSort';
 
 
 class App extends Component {
@@ -28,11 +28,11 @@ class App extends Component {
   };
 
   ALGORITHM_KEY = {
-    'Heap Sort': HeapSortKey
+    'Heap Sort': HeapKey
   };
 
   ALGORITHM_DESC = {
-    'Heap Sort': HeapSortDesc,
+    'Heap Sort': HeapDesc,
   };
 
   componentDidMount() {
@@ -98,7 +98,7 @@ class App extends Component {
     const desc = this.ALGORITHM_DESC[this.state.algorithm];
 
     const controls = (
-      <Controls
+      <Cont
         onGenerateRandomArray={this.generateRandomArray}
         algorithm={this.state.algorithm}
         onAlgorithmChange={this.handleAlgorithmChange}
@@ -111,22 +111,22 @@ class App extends Component {
 
     return (
       <div className={theme}>
-        <TopBar
+        <Bar
           drawerOpen={this.state.appDrawerOpen}
           toggleDrawer={this.toggleAppDrawer}
         >
           {controls}
-        </TopBar>
+        </Bar>
 
-        <AppDrawer
+        <Drawer
           open={this.state.appDrawerOpen}
           closeDrawer={this.toggleAppDrawer}
         >
           {controls}
-        </AppDrawer>
+        </Drawer>
 
-        <main className="App__Body">
-          <SortVisualizer
+        <main className="Alp__Body">
+          <Visualizer
             array={this.state.array}
             trace={this.state.trace}
             colorKey={colorKey}
