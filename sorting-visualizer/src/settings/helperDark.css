@@ -1,0 +1,92 @@
+.App {
+    /* MD Green 400 */
+    --primary: #66bb6a;
+    --primary-light: #98ee99;
+    --primary-dark: #338a3e;
+  
+    /* MD Pink 300 */
+    --secondary: #f06292;
+    --secondary-light: #ff94c2;
+    --secondary-dark: #ba2d65;
+  
+    /* MD Blue 400 */
+    --blue: #2f98ee;
+    --blue-light: #1d8dc0;
+    --blue-dark: #0f486b;
+  
+    /* MD Red 400 */
+    --red: #ef4744;
+    --red-light: #c8463b;
+    --red-dark: #631f18;
+  
+    /* MD Yellow 400 */
+    --yellow: #f4e66d;
+    --yellow-light: #eaea19;
+    --yellow-dark: #8e8309;
+  
+    /* MD Amber 300 */
+    --amber: #f6d052;
+    --amber-light: #f1f135;
+    --amber-dark: #a88a15;
+  
+    --white: rgba(255, 255, 255, 0.87);
+    --gray-50: rgb(242, 242, 247);
+    --gray-100: rgb(229, 229, 234);
+    --gray-200: rgb(209, 209, 214);
+    --gray-300: rgb(199, 199, 204);
+    --gray-400: rgb(174, 174, 178);
+    --gray-500: rgb(142, 142, 147);
+    --gray-600: rgb(99, 99, 102);
+    --gray-700: rgb(72, 72, 74);
+    --gray-800: rgb(58, 58, 60);
+    --gray-850: rgb(44, 44, 46);
+    --gray-900: rgb(28, 28, 30);
+  
+    --text-color: var(--gray-800);
+    --text-color-dark: var(--gray-800);
+    --button-disabled-ink-color: rgba(0, 0, 0, 0.37);
+  
+    --background-color-1: white;
+    --background-color-2: rgb(235, 228, 228);
+    --background-color-3: white;
+    --background-color-4: white;
+  
+    --elevation-baseline-color: black;
+    --elevation-umbra-opacity: 0.2;
+    --elevation-penumbra-opacity: 0.14;
+    --elevation-ambient-opacity: 0.12;
+  
+    --elevation-umbra-color: rgba(84, 69, 69, 0.2);
+    --elevation-umbra-0: 0px 0px 0px 0px;
+    --elevation-umbra-1: 0px 2px 1px -1px;
+    --elevation-umbra-2: 0px 3px 1px -2px;
+    --elevation-umbra-3: 0px 3px 3px -2px;
+    --elevation-umbra-4: 0px 2px 4px -1px;
+    --elevation-umbra-5: 0px 3px 5px -1px;
+    --elevation-umbra-6: 0px 3px 5px -1px;
+    --elevation-umbra-7: 0px 4px 5px -2px;
+    --elevation-umbra-8: 0px 5px 5px -3px;
+    --elevation-umbra-9: 0px 5px 6px -3px;
+    --elevation-umbra-10: 0px 6px 6px -3px;
+    --elevation-umbra-11: 0px 6px 7px -4px;
+    --elevation-umbra-12: 0px 7px 8px -4px;
+  
+    --elevation-penumbra-color: rgba(133, 50, 50, 0.14);
+    --elevation-penumbra-0: 0px 0px 0px 0px;
+    --elevation-penumbra-1: 0px 1px 1px 0px;
+    --elevation-penumbra-2: 0px 2px 2px 0px;
+    --elevation-penumbra-3: 0px 3px 4px 0px;
+    --elevation-penumbra-4: 0px 4px 5px 0px;
+    --elevation-penumbra-5: 0px 5px 8px 0px;
+    --elevation-penumbra-6: 0px 6px 10px 0px;
+    --elevation-penumbra-7: 0px 7px 10px 1px;
+    --elevation-penumbra-8: 0px 8px 10px 1px;
+    --elevation-penumbra-9: 0px 9px 12px 1px;
+    --elevation-penumbra-10: 0px 10px 14px 1px;
+    --elevation-penumbra-11: 0px 11px 15px 1px;
+    --elevation-penumbra-12: 0px 12px 17px 2px;
+  
+    --box-shadow-2: var(--elevation-umbra-2) var(--elevation-umbra-color),
+      var(--elevation-penumbra-2) var(--elevation-penumbra-color);
+  }
+  
