@@ -20,11 +20,6 @@ const AppControls = ({
       <Menu
         placeholder="Sort Algorithm"
         items={[
-          'Bubble Sort',
-          'Selection Sort',
-          'Insertion Sort',
-          'Merge Sort',
-          'Quick Sort',
           'Heap Sort'
         ]}
         selected={algorithm}
